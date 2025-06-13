@@ -1,6 +1,8 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
+import homeRouter from "./routes/home-router";
+import newRouter from "./routes/new-router";
 
 dotenv.config();
 
@@ -12,6 +14,9 @@ app.use(express.static(PUBLIC_DIR));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.use("/", homeRouter);
+app.use("/new", newRouter);
 
 app.get("/{*splat}", (_, res) => {
   res.render("index", { title: "Not Found", partialName: "not-found" });
