@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080;
 const PUBLIC_DIR = path.join(__dirname, "..", "public");
 
 app.use(express.static(PUBLIC_DIR));
+app.use(express.urlencoded({ extended: true }));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
