@@ -1,1 +1,9 @@
 <h1>Home</h1>
+
+<% if (messages) { %>
+<ul>
+  <% messages.forEach((message) => { %>
+  <li><%= message.text %> - <%= message.user %> - <%= message.addedDate %></li>
+  <% }); %>
+</ul>
+<% } %>

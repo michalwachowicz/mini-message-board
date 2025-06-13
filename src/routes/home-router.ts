@@ -1,9 +1,7 @@
 import { Router } from "express";
+import { getHomePage } from "../controllers/home-controller";
 
 const router = Router();
-
-router.get("/", (_, res) => {
-  res.render("index", { title: "Home", partialName: "home" });
-});
+router.get("/", getHomePage);
 
 export default router;
