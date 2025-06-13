@@ -1,7 +1,9 @@
+import formatDate from "../utils/date-formatter";
+
 export type Message = {
   text: string;
   user: string;
-  added: Date;
+  addedDate: string;
 };
 
 export class Messages {
@@ -9,18 +11,10 @@ export class Messages {
   private messages: Message[];
 
   private constructor() {
-    this.messages = [
-      {
-        text: "Hi there!",
-        user: "Amando",
-        added: new Date(),
-      },
-      {
-        text: "Hello World!",
-        user: "Charles",
-        added: new Date(),
-      },
-    ];
+    this.messages = [];
+
+    this.addMessage("Hi there!", "Amando");
+    this.addMessage("Hello World!", "Charles");
   }
 
   public static getInstance(): Messages {
@@ -35,7 +29,10 @@ export class Messages {
     return this.messages;
   }
 
-  public addMessage(message: Message): void {
+  public addMessage(text: string, user: string): void {
+    const now = new Date();
+    const message: Message = { text, user, addedDate: formatDate(now) };
+
     this.messages.push(message);
   }
 }
