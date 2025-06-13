@@ -1,9 +1,7 @@
 import { Router } from "express";
+import { getNewMessagePage } from "../controllers/new-controller";
 
 const router = Router();
-
-router.get("/", (_, res) => {
-  res.render("index", { title: "New Message", partialName: "new-message" });
-});
+router.get("/", getNewMessagePage);
 
 export default router;
