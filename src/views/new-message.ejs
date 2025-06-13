@@ -1,15 +1,27 @@
-<h1>New Message</h1>
+<h1>Create a New Message</h1>
 
-<form action="/new" method="post">
-  <div>
-    <label for="user">User:</label>
-    <input type="text" id="user" name="user" required />
+<form action="/new" method="post" class="message-form">
+  <div class="message-form-group">
+    <label class="message-form-label" for="user">User:</label>
+    <input
+      class="message-form-input"
+      type="text"
+      id="user"
+      name="user"
+      required
+    />
   </div>
 
-  <div>
-    <label for="text">Text:</label>
-    <input type="text" id="text" name="text" required />
+  <div class="message-form-group">
+    <label class="message-form-label" for="text">Text:</label>
+    <input
+      class="message-form-input"
+      type="text"
+      id="text"
+      name="text"
+      required
+    />
   </div>
 
-  <button type="submit">Add message</button>
+  <button class="btn btn-submit" type="submit">Add message</button>
 </form>

@@ -1,8 +1,14 @@
-<h1>Home</h1>
+<h1>Welcome to Message Board!</h1>
 
-<% if (messages) { %>
-<ul>
-  <% messages.forEach(({ text, user, addedDate }) => { %> <%- include('message',
-  { text, user, addedDate }) %> <% }); %>
-</ul>
-<% } %>
+<div class="chat">
+  <% if (messages) { %>
+  <ul class="chat-list">
+    <% messages.forEach(({ text, user, addedDate }) => { %> <%-
+    include('message', { text, user, addedDate }) %> <% }); %>
+  </ul>
+  <% } else { %>
+  <p>No messages yet. Be the first to add one!</p>
+  <% } %>
+
+  <a href="/new" class="btn">New Message</a>
+</div>
