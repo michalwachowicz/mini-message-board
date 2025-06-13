@@ -2,8 +2,7 @@
 
 <% if (messages) { %>
 <ul>
-  <% messages.forEach((message) => { %>
-  <li><%= message.text %> - <%= message.user %> - <%= message.addedDate %></li>
-  <% }); %>
+  <% messages.forEach(({ text, user, addedDate }) => { %> <%- include('message',
+  { text, user, addedDate }) %> <% }); %>
 </ul>
 <% } %>
