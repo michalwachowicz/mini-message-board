@@ -1,1 +1,15 @@
 <h1>New Message</h1>
+
+<form action="/new" method="post">
+  <div>
+    <label for="user">User:</label>
+    <input type="text" id="user" name="user" required />
+  </div>
+
+  <div>
+    <label for="text">Text:</label>
+    <input type="text" id="text" name="text" required />
+  </div>
+
+  <button type="submit">Add message</button>
+</form>
