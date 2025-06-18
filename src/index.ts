@@ -3,6 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 import homeRouter from "./routes/home-router";
 import newRouter from "./routes/new-router";
+import { initDatabase } from "./db/queries";
 
 dotenv.config();
 
@@ -22,6 +23,15 @@ app.get("/{*splat}", (_, res) => {
   res.render("index", { title: "Not Found", partialName: "not-found" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+initDatabase()
+  .then(() => {
+    console.log("Connected to the database successfully!");
+
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Failed to initialize database:", err);
+    process.exit(1);
+  });

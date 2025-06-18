@@ -3,8 +3,8 @@
 <div class="chat">
   <% if (messages) { %>
   <ul class="chat-list">
-    <% messages.forEach(({ text, user, addedDate }) => { %> <%-
-    include('message', { text, user, addedDate }) %> <% }); %>
+    <% messages.forEach(({ text, username, date }) => { %> <%-
+    include('message', { text, username, date }) %> <% }); %>
   </ul>
   <% } else { %>
   <p>No messages yet. Be the first to add one!</p>

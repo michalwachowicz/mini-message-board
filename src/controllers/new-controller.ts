@@ -1,5 +1,5 @@
 import express from "express";
-import { Messages } from "../models/messages";
+import { addMessage } from "../db/queries";
 
 export function getNewMessagePage(
   _: express.Request,
@@ -11,12 +11,12 @@ export function getNewMessagePage(
   });
 }
 
-export function createNewMessage(
+export async function createNewMessage(
   req: express.Request,
   res: express.Response
-): void {
-  const { text, user } = req.body;
+) {
+  const { username, text } = req.body;
+  await addMessage(username, text);
 
-  Messages.getInstance().addMessage(text, user);
   res.redirect("/");
 }

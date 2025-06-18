@@ -1,8 +1,13 @@
 import express from "express";
-import { Messages } from "../models/messages";
+import formatDate from "../utils/date-formatter";
+import { getMessages } from "../db/queries";
 
-export function getHomePage(_: express.Request, res: express.Response): void {
-  const messages = Messages.getInstance().getMessages();
+export async function getHomePage(_: express.Request, res: express.Response) {
+  const queriedMessages = await getMessages();
+  const messages = queriedMessages.map((msg) => ({
+    ...msg,
+    date: formatDate(new Date(msg.date)),
+  }));
 
   res.render("index", {
     title: "Home",
